@@ -19,7 +19,6 @@ public class Order {
     @Enumerated(EnumType.STRING) public OrderStatus status = OrderStatus.NEW;
     @Column(precision = 12, scale = 2) public BigDecimal total;
     public LocalDate createdAt;
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "order_id")
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     public List<OrderItem> items = new ArrayList<>();
 }

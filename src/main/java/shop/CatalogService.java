@@ -39,7 +39,7 @@ public class CatalogService {
 
     public void deleteCategory(Long id) {
         if (!categories.existsById(id)) throw new ApiException(404, "Категория не найдена");
-        if (products.existsByCategoryId(id))
+        if (products.existsByCategory(id))
             throw new ApiException(409, "Нельзя удалить категорию, в которой есть товары");
         categories.deleteById(id);
     }

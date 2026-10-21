@@ -50,6 +50,7 @@ public class OrderService {
             products.save(p);
 
             OrderItem it = new OrderItem();
+            it.order = o;
             it.productId = p.id;
             it.name = p.name;
             it.qty = e.getValue();
