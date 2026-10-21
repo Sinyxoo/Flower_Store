@@ -4,11 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Заказы — Flower Store</title>
-<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="/css/style.css">
 </head>
-<body data-page="orders" data-root="../" data-admin>
+<body data-page="orders" data-load="orders" data-admin>
 <div id="site-header"></div>
-<div class="admin"><aside class="side" id="side"></aside><main id="app"></main></div>
-<script src="../js/api.js"></script><script src="../js/layout.js"></script><script src="../js/pages.js"></script>
+<div class="admin">
+  <aside class="side" id="side"></aside>
+  <main>
+    <h1>Заказы</h1>
+    <div class="tbox" id="tbl"></div>
+  </main>
+</div>
+<script src="/js/common.js"></script>
+<script src="/js/layout.js"></script>
+<script src="/js/pages.js"></script>
 </body>
 </html>

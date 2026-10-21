@@ -1,4 +1,4 @@
-package shop;
+package shop.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -13,5 +13,5 @@ public class User {
     public String phone = "";
     public String address = "";
     /** USER или ADMIN */
-    public String role = "USER";
+    @Enumerated(EnumType.STRING) public Role role = Role.USER;
 }

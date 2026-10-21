@@ -9,16 +9,64 @@
   <groupId>shop</groupId>
   <artifactId>flower-store</artifactId>
   <version>1.0</version>
-  <properties><java.version>17</java.version></properties>
+  <properties>
+    <java.version>17</java.version>
+    <jacoco.version>0.8.12</jacoco.version>
+  </properties>
   <dependencies>
     <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-web</artifactId></dependency>
     <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-data-jpa</artifactId></dependency>
     <dependency><groupId>org.springframework.security</groupId><artifactId>spring-security-crypto</artifactId></dependency>
     <dependency><groupId>org.postgresql</groupId><artifactId>postgresql</artifactId><scope>runtime</scope></dependency>
+
+    <!-- Тесты: JUnit 5, Mockito, AssertJ (входят в spring-boot-starter-test) -->
+    <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-test</artifactId><scope>test</scope></dependency>
+    <!-- Встроенная БД для @DataJpaTest — тесты слоя доступа к данным идут без PostgreSQL -->
+    <dependency><groupId>com.h2database</groupId><artifactId>h2</artifactId><scope>test</scope></dependency>
   </dependencies>
   <build>
     <plugins>
       <plugin><groupId>org.springframework.boot</groupId><artifactId>spring-boot-maven-plugin</artifactId></plugin>
+
+      <!-- Отчёт о покрытии кода: target/site/jacoco/index.html -->
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <version>${jacoco.version}</version>
+        <executions>
+          <execution>
+            <id>prepare-agent</id>
+            <goals><goal>prepare-agent</goal></goals>
+            <configuration>
+              <!-- Служебные классы, которые Mockito генерирует в рантайме, не инструментируем -->
+              <excludes>
+                <exclude>*$MockitoMock*</exclude>
+              </excludes>
+            </configuration>
+          </execution>
+          <execution>
+            <id>report</id>
+            <phase>verify</phase>
+            <goals><goal>report</goal></goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <!--
+        Byte Buddy (входит в Mockito 5.x) официально поддерживает Java до 23.
+        Флаг net.bytebuddy.experimental разрешает создавать моки и на более новых
+        JDK (например, Java 27 в IntelliJ), поэтому тесты не падают
+        с "Java 27 (71) is not supported by the current version of Byte Buddy".
+      -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+          <systemPropertyVariables>
+            <net.bytebuddy.experimental>true</net.bytebuddy.experimental>
+          </systemPropertyVariables>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
 </project>

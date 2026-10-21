@@ -52,6 +52,8 @@ th{background:var(--gl);font-weight:600;font-size:14px}tr:last-child td{border-b
 .side a{padding:8px 12px;border-radius:10px;color:var(--tx)}.side a:hover,.side a.on{background:var(--gl);color:var(--gd)}
 .admin main{flex:1;padding:28px;min-width:0}
 .row{display:flex;gap:6px;flex-wrap:wrap}
-dialog{border:0;border-radius:16px;padding:24px;width:min(520px,94vw);box-shadow:0 10px 40px #0004}
-dialog::backdrop{background:#2a3a3066}
 @media(max-width:800px){.split{grid-template-columns:1fr}.bar{flex-wrap:wrap}.admin{flex-direction:column}.side{width:auto;flex-direction:row;flex-wrap:wrap}}
+/* --- добавлено при переходе на формы --- */
+[hidden]{display:none!important}
+.user form,.row form,td form{margin:0}
+.card .in form{margin-top:auto}

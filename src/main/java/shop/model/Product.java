@@ -1,10 +1,9 @@
-package shop;
+package shop.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.math.BigDecimal;
 
-/** В JSON отдаётся «плоско»: categoryId, categoryName, imageUrl — как ждёт фронтенд. */
 @Entity
 public class Product {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) public Long id;
@@ -16,6 +15,7 @@ public class Product {
     public int stock;
     public boolean visible = true;
 
+    // Эти два метода нужны только для JSON: страницы получают categoryId и categoryName
     public Long getCategoryId() { return category == null ? null : category.id; }
     public String getCategoryName() { return category == null ? "" : category.name; }
 }

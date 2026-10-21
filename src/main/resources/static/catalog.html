@@ -4,12 +4,32 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Каталог — Flower Store</title>
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="/css/style.css">
 </head>
-<body data-page="catalog" data-root="">
+<body data-page="catalog" data-load="catalog" >
 <div id="site-header"></div>
-<main class="container" id="app"></main>
+<main class="container">
+  <h1>Каталог</h1>
+  <form class="toolbar" method="get" action="/catalog.html">
+    <div>
+      <label for="cat">Категория</label>
+      <select id="cat" name="category"><option value="">Все</option></select>
+    </div>
+    <div>
+      <label for="sort">Сортировка</label>
+      <select id="sort" name="sort">
+        <option value="">По умолчанию</option>
+        <option value="price">Сначала дешёвые</option>
+        <option value="price_desc">Сначала дорогие</option>
+      </select>
+    </div>
+    <button class="btn">Показать</button>
+  </form>
+  <div class="grid" id="list"></div>
+</main>
 <div id="site-footer"></div>
-<script src="js/api.js"></script><script src="js/layout.js"></script><script src="js/pages.js"></script>
+<script src="/js/common.js"></script>
+<script src="/js/layout.js"></script>
+<script src="/js/pages.js"></script>
 </body>
 </html>

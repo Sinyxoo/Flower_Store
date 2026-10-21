@@ -4,11 +4,22 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Товары — Flower Store</title>
-<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="/css/style.css">
 </head>
-<body data-page="products" data-root="../" data-admin>
+<body data-page="products" data-load="products" data-admin>
 <div id="site-header"></div>
-<div class="admin"><aside class="side" id="side"></aside><main id="app"></main></div>
-<script src="../js/api.js"></script><script src="../js/layout.js"></script><script src="../js/pages.js"></script>
+<div class="admin">
+  <aside class="side" id="side"></aside>
+  <main>
+    <div class="toolbar" style="justify-content:space-between">
+      <h1 style="margin:0">Товары</h1>
+      <a class="btn" href="/admin/product-form.html">Добавить товар</a>
+    </div>
+    <div class="tbox" id="tbl"></div>
+  </main>
+</div>
+<script src="/js/common.js"></script>
+<script src="/js/layout.js"></script>
+<script src="/js/pages.js"></script>
 </body>
 </html>

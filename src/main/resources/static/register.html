@@ -4,12 +4,24 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Регистрация — Flower Store</title>
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="/css/style.css">
 </head>
-<body data-page="register" data-root="">
+<body data-page="register" >
 <div id="site-header"></div>
-<main class="container" id="app"><h1>Регистрация</h1><form class="form" id="f" novalidate><div class="field"><label for="name">Имя</label><input id="name" name="name" type="text"></div><div class="field"><label for="email">E-mail</label><input id="email" name="email" type="email"></div><div class="field"><label for="password">Пароль</label><input id="password" name="password" type="password"></div><div class="field"><label for="password2">Повторите пароль</label><input id="password2" name="password2" type="password"></div><button class="btn">Создать аккаунт</button><p class="muted">Уже есть аккаунт? <a href="login.html">Войти</a></p></form></main>
+<main class="container">
+  <h1>Регистрация</h1>
+  <form class="form" method="post" action="/register">
+    <div class="field"><label for="name">Имя</label><input id="name" name="name" required></div>
+    <div class="field"><label for="email">E-mail</label><input id="email" name="email" type="email" required></div>
+    <div class="field"><label for="password">Пароль (не короче 6 символов)</label><input id="password" name="password" type="password" minlength="6" required></div>
+    <div class="field"><label for="password2">Повторите пароль</label><input id="password2" name="password2" type="password" required></div>
+    <button class="btn">Создать аккаунт</button>
+    <p class="muted">Уже есть аккаунт? <a href="/login.html">Войти</a></p>
+  </form>
+</main>
 <div id="site-footer"></div>
-<script src="js/api.js"></script><script src="js/layout.js"></script><script src="js/pages.js"></script>
+<script src="/js/common.js"></script>
+<script src="/js/layout.js"></script>
+<script src="/js/pages.js"></script>
 </body>
 </html>

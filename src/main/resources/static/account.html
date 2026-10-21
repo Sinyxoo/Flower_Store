@@ -4,12 +4,35 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Личный кабинет — Flower Store</title>
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="/css/style.css">
 </head>
-<body data-page="account" data-root="">
+<body data-page="account" data-load="account" >
 <div id="site-header"></div>
-<main class="container" id="app"></main>
+<main class="container">
+  <h1>Личный кабинет</h1>
+  <div id="guest" class="empty" hidden>
+    <div class="big">🔒</div>
+    <p>Войдите, чтобы увидеть личный кабинет.</p>
+    <a class="btn" href="/login.html">Войти</a>
+  </div>
+  <div class="split" id="cabinet" hidden>
+    <form class="form" method="post" action="/account/profile">
+      <h3 style="margin-bottom:14px">Мои данные</h3>
+      <div class="field"><label>E-mail</label><input id="email" disabled></div>
+      <div class="field"><label for="n">Имя</label><input id="n" name="name" required></div>
+      <div class="field"><label for="t">Телефон</label><input id="t" name="phone"></div>
+      <div class="field"><label for="a">Адрес доставки</label><input id="a" name="address"></div>
+      <button class="btn">Сохранить</button>
+    </form>
+    <div>
+      <h3 style="margin-bottom:14px">История заказов</h3>
+      <div id="orders"></div>
+    </div>
+  </div>
+</main>
 <div id="site-footer"></div>
-<script src="js/api.js"></script><script src="js/layout.js"></script><script src="js/pages.js"></script>
+<script src="/js/common.js"></script>
+<script src="/js/layout.js"></script>
+<script src="/js/pages.js"></script>
 </body>
 </html>
